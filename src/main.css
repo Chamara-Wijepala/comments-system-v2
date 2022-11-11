@@ -1,3 +1,12 @@
+:root {
+  --clr-primary-100: 0 0% 100%;
+
+  --fs-200: 0.5rem;
+  --fs-400: 1rem;
+  --fs-600: 1.5rem;
+  --fs-800: 2rem;
+}
+
 @font-face {
   font-family: "Noto Sans";
   font-style: normal;
@@ -96,13 +105,100 @@ svg {
   }
 }
 
+/* general styles */
+
 /* components */
 
 .btn {
   padding: 0.5rem 1.5rem;
 }
 
+.btn-small {
+  padding: 0.25rem 0.75rem;
+}
+
+.btn:disabled,
+.btn-small:disabled {
+  color: hsl(0 0% 0% / 0.5);
+}
+
 /* utilities */
+
+.clr-primary-100 {
+  color: hsl(var(--clr-primary-100));
+}
+.bg-primary-100 {
+  background-color: hsl(var(--clr-primary-100));
+}
+
+.fw-bold {
+  font-weight: 700;
+}
+
+.fs-200 {
+  font-size: var(--fs-200);
+}
+.fs-400 {
+  font-size: var(--fs-400);
+}
+.fs-600 {
+  font-size: var(--fs-600);
+}
+.fs-800 {
+  font-size: var(--fs-800);
+}
+
+.flex {
+  display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-justify-center {
+  justify-content: center;
+}
+.flex-align-center {
+  align-items: center;
+}
+
+.justify-self-start {
+  justify-self: start;
+}
+.justify-self-center {
+  justify-self: center;
+}
+.justify-self-end {
+  justify-self: end;
+}
+.align-self-start {
+  align-self: start;
+}
+.align-self-center {
+  align-self: center;
+}
+.align-self-end {
+  align-self: end;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+.gap-2 {
+  gap: 2rem;
+}
+.gap-3 {
+  gap: 3rem;
+}
+
+.m-block-1 {
+  margin-block: 1rem;
+}
+.m-block-2 {
+  margin-block: 2rem;
+}
+.m-block-3 {
+  margin-block: 3rem;
+}
 
 .box-shadow-92 {
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
