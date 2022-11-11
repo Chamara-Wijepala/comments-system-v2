@@ -16,12 +16,12 @@ function App() {
   return (
     <>
       <header className="box-shadow-92 bg-primary-100">
-        <div className="container">
+        <div className="container container-lg">
           {user ? <LogOutButton /> : <LogInButton />}
         </div>
       </header>
 
-      <main className="container m-block-2">
+      <main className="container container-md m-block-2">
         <section className="create-comment-section">
           <CreateCommentForm />
         </section>
