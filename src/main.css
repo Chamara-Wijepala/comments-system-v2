@@ -107,6 +107,26 @@ svg {
 
 /* general styles */
 
+body {
+  background-color: #f2f2f2;
+}
+
+*:disabled {
+  cursor: not-allowed;
+}
+
+.create-comment-section {
+  max-width: 35rem;
+  margin-inline: auto;
+}
+
+.post-comment-btn {
+  background-color: hsl(var(--clr-primary-100));
+}
+.post-comment-btn:disabled {
+  background-color: #ebebeb;
+}
+
 /* components */
 
 .btn {
@@ -120,6 +140,12 @@ svg {
 .btn:disabled,
 .btn-small:disabled {
   color: hsl(0 0% 0% / 0.5);
+}
+
+.text-area {
+  padding: 0.5rem;
+  min-width: 100%;
+  max-width: 100%;
 }
 
 /* utilities */
