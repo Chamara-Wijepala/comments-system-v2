@@ -1,5 +1,6 @@
 :root {
   --clr-primary-100: 0 0% 100%;
+  --clr-accent-500: 300 100% 25%;
 
   --fs-200: 0.5rem;
   --fs-400: 1rem;
@@ -137,14 +138,38 @@ body {
   padding: 0.25rem 0.75rem;
 }
 
+.btn,
+.btn-small {
+  transition: color 250ms, background-color 250ms ease-in-out;
+}
+
 .btn:disabled,
 .btn-small:disabled {
   color: hsl(0 0% 0% / 0.5);
 }
 
+.btn--accent {
+  color: hsl(var(--clr-accent-500));
+}
+
+.btn--accent:disabled {
+  color: hsl(var(--clr-accent-500) / 0.5);
+  border: 2px solid hsl(var(--clr-accent-500) / 0.5);
+}
+
+.btn--accent:focus-visible,
+.btn--accent:hover {
+  color: hsl(var(--clr-primary-100));
+  background-color: hsl(var(--clr-accent-500));
+}
+
 .loader {
   position: absolute;
   inset: 0 0 0 0;
+}
+
+.header-main {
+  border-bottom: 1px solid hsl(var(--clr-accent-500) / 0.5);
 }
 
 .text-area {
@@ -154,6 +179,15 @@ body {
 }
 
 /* utilities */
+
+.border {
+  border-radius: 5px;
+  border: 2px solid black;
+}
+
+.border--accent {
+  border: 2px solid hsl(var(--clr-accent-500));
+}
 
 .clr-primary-100 {
   color: hsl(var(--clr-primary-100));
@@ -229,11 +263,6 @@ body {
 }
 .m-block-3 {
   margin-block: 3rem;
-}
-
-.box-shadow-92 {
-  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
-    rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 }
 
 .container {

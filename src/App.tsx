@@ -15,7 +15,7 @@ function App() {
     <Loader />
   ) : (
     <>
-      <header className="box-shadow-92 bg-primary-100">
+      <header className="header-main | bg-primary-100">
         <div className="container container-lg">
           {user ? <LogOutButton /> : <LogInButton />}
         </div>

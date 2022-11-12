@@ -41,7 +41,7 @@ export default function CreateCommentForm() {
       <button
         type="submit"
         disabled={!user}
-        className="post-comment-btn btn-small box-shadow-92 align-self-end"
+        className="post-comment-btn btn-small btn--accent border border--accent align-self-end"
       >
         Post
       </button>

@@ -9,7 +9,7 @@ export function LogInButton() {
       onClick={() => {
         signInWithPopup(auth, provider);
       }}
-      className="btn box-shadow-92"
+      className="btn btn--accent border border--accent"
     >
       Sign In With Google
     </button>
@@ -21,7 +21,7 @@ export function LogOutButton() {
     <button
       type="button"
       onClick={() => signOut(auth)}
-      className="btn box-shadow-92"
+      className="btn btn--accent border border--accent"
     >
       Sign Out
     </button>
