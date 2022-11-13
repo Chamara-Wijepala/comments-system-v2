@@ -1,8 +1,13 @@
+import { Routes, Route } from "react-router-dom";
 import { collection } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Loader from "components/loader";
 import { LogInButton, LogOutButton } from "components/auth";
 import CreateCommentForm from "components/create-comment-form";
+import {
+  RenderTopLevelComments,
+  RenderReply,
+} from "components/comment-section";
 
 import { auth, db } from "firebase-config";
 
@@ -25,6 +30,13 @@ function App() {
         <section className="create-comment-section">
           <CreateCommentForm />
         </section>
+
+        <hr className="divider m-block-3" />
+
+        <Routes>
+          <Route path="/" element={<RenderTopLevelComments />} />
+          <Route path="/:id" element={<RenderReply />} />
+        </Routes>
       </main>
     </>
   );

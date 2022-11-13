@@ -108,6 +108,15 @@ svg {
 
 /* general styles */
 
+a {
+  color: hsl(var(--clr-accent-500));
+  transition: color 200ms ease-in-out;
+}
+a:focus,
+a:hover {
+  color: hsl(var(--clr-accent-500) / 0.6);
+}
+
 body {
   background-color: #f2f2f2;
 }
@@ -178,6 +187,10 @@ body {
   max-width: 100%;
 }
 
+.divider {
+  opacity: 0.25;
+}
+
 /* utilities */
 
 .border {
@@ -192,8 +205,14 @@ body {
 .clr-primary-100 {
   color: hsl(var(--clr-primary-100));
 }
+.clr-accent-500 {
+  color: hsl(var(--clr-accent-500));
+}
 .bg-primary-100 {
   background-color: hsl(var(--clr-primary-100));
+}
+.bg-accent-500 {
+  background-color: hsl(var(--clr-accent-500));
 }
 
 .fw-bold {
