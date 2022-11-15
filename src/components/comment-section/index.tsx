@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import {
   query,
@@ -13,6 +14,7 @@ import {
   useDocumentData,
   useCollectionData,
 } from "react-firebase-hooks/firestore";
+import { ReplyToComment } from "components/comment-forms";
 import Comment from "components/comment";
 
 import { db } from "firebase-config";
@@ -90,6 +92,8 @@ export function RenderReply() {
 }
 
 function Parent({ comment }: { comment: IComment }) {
+  const [isBeingRepliedTo, setIsBeingRepliedTo] = useState(false);
+
   const q = query(
     commentsRef,
     where("parent", "==", comment.docId)
@@ -99,7 +103,20 @@ function Parent({ comment }: { comment: IComment }) {
 
   return (
     <div>
-      <Comment comment={comment} />
+      <Comment
+        comment={comment}
+        isBeingRepliedTo={isBeingRepliedTo}
+        setIsBeingRepliedTo={setIsBeingRepliedTo}
+      />
+
+      {isBeingRepliedTo && (
+        <div className="reply text-area-wrapper">
+          <ReplyToComment
+            parent={comment.docId}
+            setIsBeingRepliedTo={setIsBeingRepliedTo}
+          />
+        </div>
+      )}
 
       {loading ? (
         <div>Loading...</div>
@@ -113,6 +130,8 @@ function Parent({ comment }: { comment: IComment }) {
 }
 
 function FirstReply({ comment }: { comment: IComment }) {
+  const [isBeingRepliedTo, setIsBeingRepliedTo] = useState(false);
+
   const q = query(
     commentsRef,
     where("parent", "==", comment.docId)
@@ -123,7 +142,20 @@ function FirstReply({ comment }: { comment: IComment }) {
   return (
     <div className="reply">
       <div>
-        <Comment comment={comment} />
+        <Comment
+          comment={comment}
+          isBeingRepliedTo={isBeingRepliedTo}
+          setIsBeingRepliedTo={setIsBeingRepliedTo}
+        />
+
+        {isBeingRepliedTo && (
+          <div className="reply text-area-wrapper">
+            <ReplyToComment
+              parent={comment.docId}
+              setIsBeingRepliedTo={setIsBeingRepliedTo}
+            />
+          </div>
+        )}
 
         {loading ? (
           <div>Loading...</div>
@@ -138,6 +170,8 @@ function FirstReply({ comment }: { comment: IComment }) {
 }
 
 function LastReply({ comment }: { comment: IComment }) {
+  const [isBeingRepliedTo, setIsBeingRepliedTo] = useState(false);
+
   const q = query(
     commentsRef,
     where("parent", "==", comment.docId),
@@ -149,7 +183,20 @@ function LastReply({ comment }: { comment: IComment }) {
   return (
     <div className="reply">
       <div>
-        <Comment comment={comment} />
+        <Comment
+          comment={comment}
+          isBeingRepliedTo={isBeingRepliedTo}
+          setIsBeingRepliedTo={setIsBeingRepliedTo}
+        />
+
+        {isBeingRepliedTo && (
+          <div className="reply text-area-wrapper">
+            <ReplyToComment
+              parent={comment.docId}
+              setIsBeingRepliedTo={setIsBeingRepliedTo}
+            />
+          </div>
+        )}
 
         {loading ? (
           <div>Loading...</div>

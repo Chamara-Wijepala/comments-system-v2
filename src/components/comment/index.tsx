@@ -8,7 +8,15 @@ function relativeTimeFormat(timestamp: number) {
   return DateTime.fromMillis(timestamp).toRelative();
 }
 
-export default function Comment({ comment }: { comment: IComment }) {
+export default function Comment({
+  comment,
+  isBeingRepliedTo,
+  setIsBeingRepliedTo,
+}: {
+  comment: IComment;
+  isBeingRepliedTo: boolean;
+  setIsBeingRepliedTo: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   return (
     <div className="comment | bg-primary-100 m-block-1 flex flex-column gap-1">
       <div className="flex flex-align-center gap-1">
@@ -26,6 +34,8 @@ export default function Comment({ comment }: { comment: IComment }) {
       <div className="flex gap-1">
         <button
           type="button"
+          onClick={() => setIsBeingRepliedTo(true)}
+          disabled={isBeingRepliedTo}
           className="btn-xs btn--accent border border--accent"
         >
           Reply

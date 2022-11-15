@@ -3,7 +3,7 @@ import { collection } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Loader from "components/loader";
 import { LogInButton, LogOutButton } from "components/auth";
-import CreateCommentForm from "components/create-comment-form";
+import { CreateComment } from "components/comment-forms";
 import {
   RenderTopLevelComments,
   RenderReply,
@@ -28,7 +28,7 @@ function App() {
 
       <main className="container container-md m-block-2">
         <section className="create-comment-section">
-          <CreateCommentForm />
+          <CreateComment />
         </section>
 
         <hr className="divider m-block-3" />

@@ -121,6 +121,16 @@ body {
   background-color: #f2f2f2;
 }
 
+form,
+textarea {
+  min-width: 100%;
+  max-width: 100%;
+}
+
+text {
+  padding: 0.5;
+}
+
 *:disabled {
   cursor: not-allowed;
 }
@@ -182,12 +192,6 @@ button {
 
 .header-main {
   border-bottom: 1px solid hsl(var(--clr-accent-500) / 0.5);
-}
-
-.text-area {
-  padding: 0.5rem;
-  min-width: 100%;
-  max-width: 100%;
 }
 
 .divider {
