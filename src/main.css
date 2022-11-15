@@ -179,8 +179,8 @@ button {
   border: 2px solid hsl(var(--clr-accent-500) / 0.5);
 }
 
-.btn--accent:focus-visible,
-.btn--accent:hover {
+.btn--accent:focus-visible:enabled,
+.btn--accent:hover:enabled {
   color: hsl(var(--clr-primary-100));
   background-color: hsl(var(--clr-accent-500));
 }
