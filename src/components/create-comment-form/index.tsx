@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addDoc, serverTimestamp } from "firebase/firestore";
+import { addDoc, Timestamp } from "firebase/firestore";
 import TextareaAutosize from "react-textarea-autosize";
 
 import { auth } from "firebase-config";
@@ -18,7 +18,7 @@ export default function CreateCommentForm() {
       photo: user?.photoURL,
       body: textInput,
       parent: null,
-      createdAt: serverTimestamp(),
+      createdAt: Timestamp.now(),
     });
 
     setTextInput("");
