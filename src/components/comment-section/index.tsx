@@ -156,9 +156,11 @@ function LastReply({ comment }: { comment: IComment }) {
         ) : (
           snapshot &&
           snapshot.length > 0 && (
-            <Link to={comment.docId} className="link">
-              See more replies
-            </Link>
+            <div className="reply">
+              <Link to={comment.docId} className="link">
+                See more replies
+              </Link>
+            </div>
           )
         )}
       </div>
