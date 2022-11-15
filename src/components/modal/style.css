@@ -1,0 +1,16 @@
+.modal-background {
+  position: fixed;
+  inset: 0 0 0 0;
+  background-color: hsl(0 0% 0% / 0.3);
+}
+
+.modal {
+  padding: 1.5rem;
+  margin: 1rem;
+  border-radius: 8px;
+}
+
+.modal__btn-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

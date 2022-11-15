@@ -1,6 +1,7 @@
 :root {
   --clr-primary-100: 0 0% 100%;
   --clr-accent-500: 300 100% 25%;
+  --clr-accent-400: 4 90% 58%;
 
   --fs-200: 0.5rem;
   --fs-400: 1rem;
@@ -173,16 +174,27 @@ button {
 .btn--accent {
   color: hsl(var(--clr-accent-500));
 }
-
 .btn--accent:disabled {
   color: hsl(var(--clr-accent-500) / 0.5);
   border: 2px solid hsl(var(--clr-accent-500) / 0.5);
 }
-
 .btn--accent:focus-visible:enabled,
 .btn--accent:hover:enabled {
   color: hsl(var(--clr-primary-100));
   background-color: hsl(var(--clr-accent-500));
+}
+
+.btn--danger {
+  color: hsl(var(--clr-accent-400));
+}
+.btn--danger:disabled {
+  color: hsl(var(--clr-accent-400) / 0.5);
+  border: 2px solid hsl(var(--clr-accent-400) / 0.5);
+}
+.btn--danger:focus-visible:enabled,
+.btn--danger:hover:enabled {
+  color: hsl(var(--clr-primary-100));
+  background-color: hsl(var(--clr-accent-400));
 }
 
 .loader {
@@ -209,14 +221,24 @@ button {
   border: 2px solid hsl(var(--clr-accent-500));
 }
 
+.border--danger {
+  border: 2px solid hsl(var(--clr-accent-400));
+}
+
 .clr-primary-100 {
   color: hsl(var(--clr-primary-100));
+}
+.clr-accent-400 {
+  color: hsl(var(--clr-accent-400));
 }
 .clr-accent-500 {
   color: hsl(var(--clr-accent-500));
 }
 .bg-primary-100 {
   background-color: hsl(var(--clr-primary-100));
+}
+.bg-accent-400 {
+  background-color: hsl(var(--clr-accent-400));
 }
 .bg-accent-500 {
   background-color: hsl(var(--clr-accent-500));

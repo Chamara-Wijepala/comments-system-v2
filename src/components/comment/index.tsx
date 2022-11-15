@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { deleteDoc, doc } from "firebase/firestore";
+import { doc } from "firebase/firestore";
 import { DateTime } from "luxon";
 import { UpdateComment } from "components/comment-forms";
+import { DeleteConfirmationModal } from "components/modal";
 
 import { auth, db } from "firebase-config";
 
@@ -23,6 +24,7 @@ export default function Comment({
   setIsBeingRepliedTo: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const [isBeingUpdated, setIsBeingUpdated] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const user = auth.currentUser;
 
@@ -30,6 +32,13 @@ export default function Comment({
 
   return (
     <div className="comment | bg-primary-100 m-block-1 flex flex-column gap-1">
+      {isModalOpen && (
+        <DeleteConfirmationModal
+          docRef={docRef}
+          setIsModalOpen={setIsModalOpen}
+        />
+      )}
+
       <div className="flex flex-align-center gap-1">
         <img src={comment.photo} alt="" className="comment__image" />
 
@@ -82,8 +91,8 @@ export default function Comment({
             <button
               type="button"
               disabled={isBeingRepliedTo || isBeingUpdated}
-              onClick={() => deleteDoc(docRef)}
-              className="comment__delete-btn | btn-xs btn--accent border border--accent"
+              onClick={() => setIsModalOpen(true)}
+              className="comment__delete-btn | btn-xs btn--danger border border--danger"
             >
               Delete
             </button>
