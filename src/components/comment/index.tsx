@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { deleteDoc, doc } from "firebase/firestore";
 import { DateTime } from "luxon";
+import { UpdateComment } from "components/comment-forms";
 
 import { auth, db } from "firebase-config";
 
@@ -20,6 +22,8 @@ export default function Comment({
   isBeingRepliedTo: boolean;
   setIsBeingRepliedTo: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  const [isBeingUpdated, setIsBeingUpdated] = useState(false);
+
   const user = auth.currentUser;
 
   const docRef = doc(db, "comments", comment.docId);
@@ -32,11 +36,25 @@ export default function Comment({
         <div className="flex flex-wrap gap-1">
           <p className="fw-bold">{comment.userName}</p>
 
-          <p>{relativeTimeFormat(comment.createdAt.seconds * 1000)}</p>
+          <p>
+            {comment.updatedAt
+              ? `Updated ${relativeTimeFormat(
+                  comment.updatedAt.seconds * 1000
+                )}`
+              : relativeTimeFormat(comment.createdAt.seconds * 1000)}
+          </p>
         </div>
       </div>
 
-      <p className="comment__body">{comment.body}</p>
+      {isBeingUpdated ? (
+        <UpdateComment
+          body={comment.body}
+          docRef={docRef}
+          setIsBeingUpdated={setIsBeingUpdated}
+        />
+      ) : (
+        <p className="comment__body">{comment.body}</p>
+      )}
 
       <div className="flex gap-1">
         <button
@@ -48,21 +66,26 @@ export default function Comment({
           Reply
         </button>
 
-        <button
-          type="button"
-          className="btn-xs btn--accent border border--accent"
-        >
-          Edit
-        </button>
-
         {user?.uid === comment.userId && (
-          <button
-            type="button"
-            onClick={() => deleteDoc(docRef)}
-            className="comment__delete-btn | btn-xs btn--accent border border--accent"
-          >
-            Delete
-          </button>
+          <>
+            <button
+              type="button"
+              disabled={isBeingUpdated}
+              onClick={() => setIsBeingUpdated(true)}
+              className="btn-xs btn--accent border border--accent"
+            >
+              Edit
+            </button>
+
+            <button
+              type="button"
+              disabled={isBeingRepliedTo || isBeingUpdated}
+              onClick={() => deleteDoc(docRef)}
+              className="comment__delete-btn | btn-xs btn--accent border border--accent"
+            >
+              Delete
+            </button>
+          </>
         )}
       </div>
     </div>
