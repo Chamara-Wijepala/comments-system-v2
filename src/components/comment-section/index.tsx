@@ -21,6 +21,8 @@ import { commentsRef } from "App";
 
 import { IComment } from "types";
 
+import "./style.css";
+
 const converter: FirestoreDataConverter<IComment> = {
   toFirestore(comment: WithFieldValue<IComment>): DocumentData {
     return {
@@ -90,7 +92,7 @@ function Parent({ comment }: { comment: IComment }) {
   const [snapshot, loading] = useCollectionData<IComment>(q);
 
   return (
-    <>
+    <div>
       <Comment comment={comment} />
 
       {loading ? (
@@ -100,7 +102,7 @@ function Parent({ comment }: { comment: IComment }) {
           <FirstReply key={document.docId} comment={document} />
         ))
       )}
-    </>
+    </div>
   );
 }
 
@@ -113,17 +115,19 @@ function FirstReply({ comment }: { comment: IComment }) {
   const [snapshot, loading] = useCollectionData<IComment>(q);
 
   return (
-    <>
-      <Comment comment={comment} />
+    <div className="reply">
+      <div>
+        <Comment comment={comment} />
 
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        snapshot?.map((document) => (
-          <LastReply key={document.docId} comment={document} />
-        ))
-      )}
-    </>
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          snapshot?.map((document) => (
+            <LastReply key={document.docId} comment={document} />
+          ))
+        )}
+      </div>
+    </div>
   );
 }
 
@@ -137,15 +141,19 @@ function LastReply({ comment }: { comment: IComment }) {
   const [snapshot, loading] = useCollectionData<IComment>(q);
 
   return (
-    <>
-      <Comment comment={comment} />
+    <div className="reply">
+      <div>
+        <Comment comment={comment} />
 
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        snapshot &&
-        snapshot.length > 0 && <Link to={comment.docId}>See more replies</Link>
-      )}
-    </>
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          snapshot &&
+          snapshot.length > 0 && (
+            <Link to={comment.docId}>See more replies</Link>
+          )
+        )}
+      </div>
+    </div>
   );
 }

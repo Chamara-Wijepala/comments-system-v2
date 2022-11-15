@@ -1,0 +1,12 @@
+.reply::before {
+  content: "";
+  width: 0px;
+  height: 100%;
+  border-left: 2px solid hsl(0 0% 0% / 0.15);
+  margin-right: 1rem;
+}
+
+.reply {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+}
