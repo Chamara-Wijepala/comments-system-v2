@@ -1,0 +1,19 @@
+.comment {
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.comment__image {
+  border-radius: 50%;
+  object-fit: contain;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.comment__body {
+  word-wrap: break-word;
+}
+
+.comment__delete-btn {
+  margin-left: auto;
+}
