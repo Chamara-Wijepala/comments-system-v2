@@ -57,14 +57,16 @@ export default function Comment({
       )}
 
       <div className="flex gap-1">
-        <button
-          type="button"
-          onClick={() => setIsBeingRepliedTo(true)}
-          disabled={isBeingRepliedTo}
-          className="btn-xs btn--accent border border--accent"
-        >
-          Reply
-        </button>
+        {user && (
+          <button
+            type="button"
+            onClick={() => setIsBeingRepliedTo(true)}
+            disabled={isBeingRepliedTo}
+            className="btn-xs btn--accent border border--accent"
+          >
+            Reply
+          </button>
+        )}
 
         {user?.uid === comment.userId && (
           <>
