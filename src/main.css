@@ -108,12 +108,12 @@ svg {
 
 /* general styles */
 
-a {
+.link {
   color: hsl(var(--clr-accent-500));
   transition: color 200ms ease-in-out;
 }
-a:focus,
-a:hover {
+.link:focus,
+.link:hover {
   color: hsl(var(--clr-accent-500) / 0.6);
 }
 

@@ -1,4 +1,4 @@
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import {
   query,
   where,
@@ -72,8 +72,14 @@ export function RenderReply() {
 
   const [snapshot, loading] = useDocumentData<IComment>(docRef);
 
+  const navigate = useNavigate();
+
   return (
     <section>
+      <button type="button" onClick={() => navigate(-1)} className="link">
+        Go back
+      </button>
+
       {loading ? (
         <div>Loading...</div>
       ) : (
@@ -150,7 +156,9 @@ function LastReply({ comment }: { comment: IComment }) {
         ) : (
           snapshot &&
           snapshot.length > 0 && (
-            <Link to={comment.docId}>See more replies</Link>
+            <Link to={comment.docId} className="link">
+              See more replies
+            </Link>
           )
         )}
       </div>
