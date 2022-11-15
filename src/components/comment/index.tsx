@@ -1,6 +1,12 @@
+import { DateTime } from "luxon";
+
 import { IComment } from "types";
 
 import "./style.css";
+
+function relativeTimeFormat(timestamp: number) {
+  return DateTime.fromMillis(timestamp).toRelative();
+}
 
 export default function Comment({ comment }: { comment: IComment }) {
   return (
@@ -11,7 +17,7 @@ export default function Comment({ comment }: { comment: IComment }) {
         <div className="flex flex-wrap gap-1">
           <p className="fw-bold">{comment.userName}</p>
 
-          <p>{comment.createdAt.seconds}</p>
+          <p>{relativeTimeFormat(comment.createdAt.seconds * 1000)}</p>
         </div>
       </div>
 
