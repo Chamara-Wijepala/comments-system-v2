@@ -1,4 +1,7 @@
+import { deleteDoc, doc } from "firebase/firestore";
 import { DateTime } from "luxon";
+
+import { auth, db } from "firebase-config";
 
 import { IComment } from "types";
 
@@ -17,6 +20,10 @@ export default function Comment({
   isBeingRepliedTo: boolean;
   setIsBeingRepliedTo: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  const user = auth.currentUser;
+
+  const docRef = doc(db, "comments", comment.docId);
+
   return (
     <div className="comment | bg-primary-100 m-block-1 flex flex-column gap-1">
       <div className="flex flex-align-center gap-1">
@@ -48,12 +55,15 @@ export default function Comment({
           Edit
         </button>
 
-        <button
-          type="button"
-          className="comment__delete-btn | btn-xs btn--accent border border--accent"
-        >
-          Delete
-        </button>
+        {user?.uid === comment.userId && (
+          <button
+            type="button"
+            onClick={() => deleteDoc(docRef)}
+            className="comment__delete-btn | btn-xs btn--accent border border--accent"
+          >
+            Delete
+          </button>
+        )}
       </div>
     </div>
   );
