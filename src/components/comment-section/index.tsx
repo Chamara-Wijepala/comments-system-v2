@@ -3,6 +3,7 @@ import { useLocation, Link, useNavigate } from "react-router-dom";
 import {
   query,
   where,
+  orderBy,
   limit,
   doc,
   QueryDocumentSnapshot,
@@ -47,9 +48,11 @@ const converter: FirestoreDataConverter<IComment> = {
 };
 
 export function RenderTopLevelComments() {
-  const q = query(commentsRef, where("parent", "==", null)).withConverter(
-    converter
-  );
+  const q = query(
+    commentsRef,
+    where("parent", "==", null),
+    orderBy("createdAt")
+  ).withConverter(converter);
 
   const [snapshot, loading] = useCollectionData<IComment>(q);
 
@@ -96,7 +99,8 @@ function Parent({ comment }: { comment: IComment }) {
 
   const q = query(
     commentsRef,
-    where("parent", "==", comment.docId)
+    where("parent", "==", comment.docId),
+    orderBy("createdAt")
   ).withConverter(converter);
 
   const [snapshot, loading] = useCollectionData<IComment>(q);
@@ -134,7 +138,8 @@ function FirstReply({ comment }: { comment: IComment }) {
 
   const q = query(
     commentsRef,
-    where("parent", "==", comment.docId)
+    where("parent", "==", comment.docId),
+    orderBy("createdAt")
   ).withConverter(converter);
 
   const [snapshot, loading] = useCollectionData<IComment>(q);
