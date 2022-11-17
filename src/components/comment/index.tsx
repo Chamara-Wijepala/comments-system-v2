@@ -40,7 +40,7 @@ export default function Comment({
       )}
 
       <div className="flex flex-align-center gap-1">
-        <img src={comment.photo} alt="" className="comment__image" />
+        <img src={comment.photo} alt="profile" className="comment__image" />
 
         <div className="flex flex-wrap gap-1">
           <p className="fw-bold">{comment.userName}</p>
