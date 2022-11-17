@@ -17,6 +17,7 @@ import {
 } from "react-firebase-hooks/firestore";
 import { ReplyToComment } from "components/comment-forms";
 import Comment from "components/comment";
+import { BarLoader } from "react-spinners";
 
 import { db } from "firebase-config";
 
@@ -59,7 +60,7 @@ export function RenderTopLevelComments() {
   return (
     <section>
       {loading ? (
-        <div>Loading...</div>
+        <BarLoader color="purple" />
       ) : (
         snapshot?.map((document) => (
           <Parent key={document.docId} comment={document} />
@@ -86,7 +87,7 @@ export function RenderReply() {
       </button>
 
       {loading ? (
-        <div>Loading...</div>
+        <BarLoader color="purple" />
       ) : (
         snapshot && <Parent comment={snapshot} />
       )}
@@ -123,7 +124,7 @@ function Parent({ comment }: { comment: IComment }) {
       )}
 
       {loading ? (
-        <div>Loading...</div>
+        <BarLoader color="purple" />
       ) : (
         snapshot?.map((document) => (
           <FirstReply key={document.docId} comment={document} />
@@ -163,7 +164,7 @@ function FirstReply({ comment }: { comment: IComment }) {
         )}
 
         {loading ? (
-          <div>Loading...</div>
+          <BarLoader color="purple" />
         ) : (
           snapshot?.map((document) => (
             <LastReply key={document.docId} comment={document} />
@@ -204,7 +205,7 @@ function LastReply({ comment }: { comment: IComment }) {
         )}
 
         {loading ? (
-          <div>Loading...</div>
+          <BarLoader color="purple" />
         ) : (
           snapshot &&
           snapshot.length > 0 && (
