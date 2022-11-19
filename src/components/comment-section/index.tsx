@@ -210,7 +210,7 @@ function LastReply({ comment }: { comment: IComment }) {
           snapshot &&
           snapshot.length > 0 && (
             <div className="reply">
-              <Link to={comment.docId} className="link">
+              <Link to={`/${comment.docId}`} className="link">
                 See more replies
               </Link>
             </div>
